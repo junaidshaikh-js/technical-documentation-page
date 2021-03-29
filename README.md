@@ -17,21 +17,38 @@ This is a solution to the [Build a Technical Documentation Page](https://www.fre
 
 ### The challenge
 
+The challenge is to fulfill the user-stories given in the challenge and build a technical documentation page.   
 
 ### Screenshot
 
+![](./screenshot.png)
 
 ### Links
 
-- Solution URL: [Solution]()
-- Live Site URL: [Live Site]()
-
+- Solution URL: [Solution](https://junaidshaikh-js.github.io/technical-documentation-page/)
+- Live Site URL: [Live Site](https://github.com/junaidshaikh-js/technical-documentation-page)
 
 ## My process
 
 ### Built with
 
+- Semantic HTML5 markup
+- CSS custom properties
+- Media queries used to make responsive webpage
+
 ### What I learned
+
+What's new for me in this challenge is the use of CSS variables. They provide a easy way to set primary and secondary colors (not only limited to this) for the website and whole color where we applied the variable will be changed by changing only one value. 
+Here is a CSS code that shows the variable used in this challenge. 
+
+``` css
+ :root {
+    --code-color: rgb(245, 237, 237);
+    --h3-back-color: black;
+    --h3-text-color: white;
+    --text-color: #4d4e53;
+  }
+```
 
 
 ## Author
