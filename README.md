@@ -25,8 +25,8 @@ The challenge is to fulfill the user-stories given in the challenge and build a 
 
 ### Links
 
-- Solution URL: [Solution](https://junaidshaikh-js.github.io/technical-documentation-page/)
-- Live Site URL: [Live Site](https://github.com/junaidshaikh-js/technical-documentation-page)
+- Solution URL: [Solution](https://github.com/junaidshaikh-js/technical-documentation-page)
+- Live Site URL: [Live Site](https://junaidshaikh-js.github.io/technical-documentation-page/)
 
 ## My process
 
