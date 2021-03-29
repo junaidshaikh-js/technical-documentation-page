@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --code-color: rgb(245, 237, 237);
+    --h3-back-color: black;
+    --h3-text-color: white;
+    --text-color: #4d4e53;
+  }
+  
+  body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Baloo Bhai 2", cursive;
+    line-height: 1.5;
+    min-width: 250px;
+  }
+  
+  #navbar {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 20vw;
+    height: 100%;
+    border-right: solid black;
+    background-color: #fcfcfc;
+  }
+  
+  #navbar header {
+    text-align: center;
+    font-size: 2em;
+  }
+  
+  #navbar ul {
+    height: 88%;
+    padding: 0px 0px 0px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fcfcfc;
+  }
+  
+  #navbar li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    margin: 15px 0px;
+  }
+  
+  #navbar li:hover {
+    text-decoration: underline;
+  }
+  
+  #navbar a {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: rgb(46, 32, 32);
+  }
+  
+  @media only screen and (max-width: 850px){
+   #navbar ul {
+      border: 1px solid;
+      height: 207px;
+      width: 100%;
+    }
+  
+    #navbar {
+      background-color: white;
+      position: absolute;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      max-height: 275px;
+      border: none;
+      z-index: 1;
+      border-bottom: 2px solid;
+    }
+  }
+  
+  #main-doc {
+    position: absolute;
+    margin-left: 350px;
+    margin-right: 300px;
+    padding: 10px;
+  }
+  
+  #main-doc header {
+    font-size: 2rem;
+    color: black;
+    margin-top: 40px;
+  }
+  
+  section li {
+    margin: 10px 0px 0px 10px;
+  }
+  
+  #main-doc p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+  }
+  
+  code {
+    background-color: var(--code-color);
+    font-size: 1.1rem;
+    white-space: pre;
+    display: inline-block;
+  }
+  
+  h3 {
+    background-color: var(--h3-back-color);
+    color: var(--h3-text-color);
+    padding: 0px 4px 0px 40px;
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  
+  .doc-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0px auto;
+  }
+  
+  #dev {
+    text-align: right;
+  }
+  
+  @media only screen and (max-width: 1050px){
+    #main-doc{
+      margin-right: 200px;
+      margin-left: 300px
+    }
+  }
+  
+  @media only screen and (max-width: 850px) {
+    #main-doc {
+      width: 100%;
+      position: relative;
+      margin-left: 10px;
+      margin-right: 20px;
+      margin-top: 270px;
+    }
+    
+    code{
+    max-width:100%
+    }
+  }
+  
+  
+  

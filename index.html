@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>CSS Flexbox</header>
+        <hr>
+        <ul>
+            <li><a href="#introduction" class="nav-link"> Introduction</a></li>
+            <li><a href="#the_two_axes_of_flexbox" class="nav-link">The two axes of flexbox</a></li>
+            <li><a href="#start_and_end_lines" class="nav-link"> Start and end lines</a></li>
+            <li><a href="#the_flex_container" class="nav-link"> The flex container</a></li>
+            <li><a href="#multi-line_flex_containers_with_flex-wrap" class="nav-link">Multi-line flex containers with
+                    flex-wrap</a></li>
+            <li><a href="#the_flex-flow_shorthand" class="nav-link">The flex-flow shorthand</a></li>
+            <li><a href="#properties_applied_to_flex_items" class="nav-link">Properties applied to flex items</a></li>
+            <li><a href="#alignment_justification_and_distribution_of_free_space_between_items" class="nav-link">
+                    Alignment, justification and distribution of free space between items</a>
+            </li>
+            <li><a href="#reference" class="nav-link">Reference</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-doc">
+        <section class="main-section" id="introduction">
+            <header>Introduction</header>
+            <p>The Flexible Box Module, usually referred to as flexbox, was designed as a one-dimensional layout model,
+                and as a method that could offer space distribution between items in an interface and powerful alignment
+                capabilities.</p>
+            <p>The main idea behind the flex layout is to give the container the ability to alter its items’
+                width/height (and order) to best fill the available space (mostly to accommodate to all kind of display
+                devices and screen sizes). A flex container expands items to fill available free space or shrinks them
+                to prevent overflow.</p>
+            <p>Most importantly, the flexbox layout is direction-agnostic as opposed to the regular layouts (block which
+                is vertically-based and inline which is horizontally-based). While those work well for pages, they lack
+                flexibility (no pun intended) to support large or complex applications (especially when it comes to
+                orientation changing, resizing, stretching, shrinking, etc.) </p>
+        </section>
+
+        <section class="main-section" id="the_two_axes_of_flexbox">
+            <header>The two axes of flexbox</header>
+            <p>When working with flexbox you need to think in terms of two axes — the main axis and the cross axis. The
+                main axis is defined by the <code>flex-direction</code> property, and the cross axis runs perpendicular
+                to it. Everything we do with flexbox refers back to these axes, so it is worth understanding how they
+                work from the outset.</p>
+            <h3>The main axis</h3>
+            <p>The main axis is defined by <code>flex-direction</code> , which has four possible values:</p>
+            <ul>
+                <li><code>row</code></li>
+                <li><code>row-reverse</code></li>
+                <li><code>column</code></li>
+                <li><code>column-reverse</code></li>
+            </ul>
+            <p>Should you choose <code>row</code> or <code>row-reverse</code>, your main axis will run along the row in
+                the <b>inline direction</b>.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15614/28c51e9af9a679c112cace1dea8eec71/Basics1.png"
+                alt=" Main axis - flex-direction: row" class="doc-img">
+            <p>Choose <code>column</code> or <code>column-reverse</code> and your main axis will run from the top of the
+                page to the bottom - in the <b>block direction</b>.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15615/5789d84db9e271d5947fc20fa1980227/Basics2.png"
+                alt="Main axis - flex-direction: column" class="doc-img">
+            <h3>The cross axis</h3>
+            <p>The cross axis runs perpendicular to the main axis, therefore if your <code>flex-direction</code> (main
+                axis) is set to <code>row</code> or <code>row-reverse</code> the cross axis runs down the columns.
+            </p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15616/48a1d67a5d86fe82221bf2076db98ccb/Basics3.png"
+                alt="Cross axis - flex-direction: row" class="doc-img">
+            <p>If your main axis is <code>column</code> or <code>column-reverse</code> then the cross axis runs along
+                the rows.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15617/db2fb92dd4515abfcb6e1153710a00bd/Basics4.png"
+                alt="Cross axis - flex-direction: column" class="doc-img">
+            <p>understanding which axis is which is important when we start to look at aligning and justifying flex
+                items; flexbox features properties that align and justify content along one axis or the other.</p>
+        </section>
+
+        <section class="main-section" id="start_and_end_lines">
+            <header>Start and end lines</header>
+            <p>Another vital area of understanding is how flexbox makes no assumption about the writing mode of the
+                document. In the past, CSS was heavily weighted towards horizontal and left-to-right writing modes.
+                Modern layout methods encompass the range of writing modes and so we no longer assume that a line of
+                text will start at the top left of a document and run towards the right hand side, with new lines
+                appearing one under the other.</p>
+            <p>If the <code>flex-direction</code> is <code>row</code> and I am working in English, then the start edge
+                of the main axis will be on the left, the end edge on the right.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15618/02f991ba743910ebd8194840592d3d47/Basics5.png"
+                alt="Start and end line in English" class="doc-img">
+            <p>If I were to work in Arabic, then the start edge of my main axis would be on the right and the end edge
+                on the left.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15619/c14b91f60867f1a674719bde15e2fff5/Basics6.png"
+                alt="Start and end lines in Arabic" class="doc-img">
+            <p>In both cases the start edge of the cross axis is at the top of the flex container and the end edge at
+                the bottom, as both languages have a horizontal writing mode.</p>
+        </section>
+
+        <section class="main-section" id="the_flex_container">
+            <header>The flex container</header>
+            <p>An area of a document laid out using flexbox is called <b>flex container.</b> To create a flex container,
+                we set the value of the area's container's <code>display</code> property to <code>flex</code> or
+                <code>inline-flex</code>. As soon as we do this the direct children of that container become flex items.
+                As with all properties in CSS, some initial values are defined, so when creating a flex container all of
+                the contained flex items will behave in the following way.</p>
+            <ul>
+                <li>Items display in row. </li>
+                <li>The items start from the start edge of the main axis.</li>
+                <li>The items do not stretch on the main dimension, but can shrink.</li>
+                <li>The items will stretch to fill the size of the cross axis.</li>
+                <li>The <code>flex-basic</code> property is set to <code>auto</code>.</li>
+                <li>The <code>flex-wrap</code> property is set to <code>nowrap</code>.</li>
+            </ul>
+            <h3>Changing flex-direction</h3>
+            <p>Adding the <code>flex-direction</code> property to the flex container allows us to change the direction
+                in which our flex items display. Setting <code>flex-direction: row-reverse</code> will keep the items
+                displaying along the row, however the start and end lines are switched.</p>
+            <p>If we change <code>flex-direction</code> to <code>column</code> the main axis switches and our items now
+                display in a column. Set <code>column-reverse</code> and the start and end lines are again switched.</p>
+            <p>Look at the following code:</p>
+            <code>
+.box{
+        display:flex;
+         flex-direction: row | row-reverse | column | column-reverse;
+ }       
+                </code>
+        </section>
+
+        <section class="main-section" id="multi-line_flex_containers_with_flex-wrap">
+            <header>Multi-line flex containers with flex-wrap</header>
+            <p>While flexbox is a one dimensional model, it is possible to cause our flex items to wrap onto multiple
+                lines. In doing so, you should consider each line as a new flex container. Any space distribution will
+                happen across that line, without reference to the lines either side.</p>
+            <p>To cause wrapping behaviour add the property <code>flex-wrap</code> with a value of <code>wrap</code>.
+                Now, should your items be too large to all display in one line, they will wrap onto another line. The
+                live sample below contains items that have been given a width, the total width of the items being too
+                wide for the flex container. As <code>flex-wrap</code> is set to <code>wrap</code>, the items wrap. Set
+                it to <code>nowrap</code>, which is also the initial value, and they will instead shrink to fit the
+                container because they are using initial flexbox values that allows items to shrink. Using
+                <code>nowrap</code> would cause an overflow if the items were not able to shrink, or could not shrink
+                small enough to fit.</p>
+            <code>
+.box{
+    display: flex;
+    flex-wrap: nowrap | wrap;
+}      
+                </code>
+        </section>
+
+        <section class="main-section" id="the_flex-flow_shorthand">
+            <header>The flex-flow shorthand</header>
+            <p>You can combine the two properties <code>flex-direction</code> and <code>flex-wrap</code> into the
+                <code>flex-flow</code> shorthand. The first value specified is <code>flex-direction</code> and the
+                second value is <code>flex-wrap</code>.</p>
+            <code>
+.box{
+    display: flex;
+    flex-flow: row wrap;
+ }   
+            </code>
+        </section>
+
+        <section class="main-section" id="properties_applied_to_flex_items">
+            <header>Properties applied to flex items</header>
+            <p>To have more control over flex items we can target them directly. We do this by way of three properties:
+            </p>
+            <ul>
+                <li><code>flex-grow</code></li>
+                <li><code>flex-shrink</code></li>
+                <li><code>flex-basic</code></li>
+            </ul>
+            <p>Before we can make sense of these properties we need to consider the concept of <b>available space</b>.
+                What we are doing when we change the value of these flex properties is to change the way that available
+                space is distributed amongst our items. This concept of available space is also important when we come
+                to look at aligning items.</p>
+            <p>If we have three 100 pixel-wide items in a container which is 500 pixels wide, then the space we need to
+                lay out our items is 300 pixels. This leaves 200 pixels of available space. If we don’t change the
+                initial values then flexbox will put that space after the last item.</p>
+            <img src="https://media.prod.mdn.mozit.cloud/attachments/2017/11/02/15620/e606ba10fa6b8dd7913e5a41ea4602c3/Basics7.png"
+                alt="" class="doc-img">
+            <p>If we instead would like the items to grow and fill the space, then we need to have a method of
+                distributing the leftover space between the items. This is what the flex properties that we apply to the
+                items themselves, will do.</p>
+            <h3>The flex-basic property</h3>
+            <p>The <code>flex-basic</code> is what defines the size of that item in terms of the space it leaves as
+                available space. The initial value of this property is <code>auto</code> - in this case the browser
+                looks to see if the items have a size. In the example above, all of the items have a width of 100 pixels
+                and so this is used as the <code> flex-basis</code>.</p>
+            <h3>The flex-grow property</h3>
+            <p>With the <code>flex-grow</code> property set to a positive integer, flex items can grow along the main
+                axis from their <code>flex-basic</code>. This will cause the item to stretch and take up any available
+                space on that axis, or a proportion of the available space if other items are allowed to grow too.</p>
+            <p>If we gave all of our items in the example above a <code>flex-grow</code> value of 1 then the available
+                space in the flex container would be equally shared between our items and they would stretch to fill the
+                container on the main axis.</p>
+            <p>The flex-grow property can be used to distribute space in proportion. If we give our first item a
+                <code>flex-grow</code> value of 2 and the other items a value of 1, 2 parts will be given to the first
+                item (100px out of 200px in the case of the example above), 1 part each the other two (50px each out of
+                the 200px total).</p>
+            <h3>The flex-shrink property</h3>
+            <p>Where the <code>flex-grow</code> property deals with adding space in the main axis, the
+                <code>flex-shink</code> property controls how it is taken away. If we do not have enough space in the
+                container to lay out our items and <code>flex-shrink</code> is set to a positive integer the item can
+                become smaller than the <code>flex-basic</code>. As with <code>flex-grow</code> different values can be
+                assigned in order to cause one item to shrink faster than others — an item with a higher value set for
+                <code>flex-shrink</code> will shrink faster than its siblings that have lower values.</p>
+            <h3>Shorthand values for the flex properties</h3>
+            <p>You will very rarely see the <code>flex-grow</code>, <code>flex-shrink</code>, and
+                <code>flex-basic</code> properties used individually; instead they are combined into the
+                <code>flex</code> shorthand. The <code>flex</code> shorthand allows you to set the three values in this
+                order - <code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basic</code>.</p>
+            <p>There are also some predefined shorthand values which cover most of the use cases. You will often see
+                these used in tutorials, and in many cases these are all you will need to use. The predefined values are
+                as follows:</p>
+            <ul>
+                <li><code>flex: initial</code></li>
+                <li><code>flex: auto</code></li>
+                <li><code>flex: none</code></li>
+                <li><code>flex: &lt;positive-number&gt;</code></li>
+            </ul>
+            <p>Setting <code>flex: initial</code> resets the item to the initial values of Flexbox. This is the same as
+                <code>flex: 0 1 auto</code>. In this case the value of <code>flex-grow</code> is 0, so items will not
+                grow larger than their <code>flex-basic</code> size. The value of <code>flex-shink</code> is 1, so items
+                can shrink if they need to rather than overflowing. The value of <code>flex-basic</code> is
+                <code>auto</code>. Items will either use any size set on the item in the main dimension, or they will
+                get their size from the content size.</p>
+            <p>Using <code>flex: auto</code> is the same as using <code>flex: 1 1 auto;</code> everything is as with
+                <code>flex: initial</code> but in this case the items can grow and fill the container as well as shrink
+                if required.</p>
+            <p>Using <code>flex: none</code> will create fully inflexible flex items. It is as if you wrote
+                <code>flex: 0 0 auto</code>. The items cannot grow or shrink but will be laid out using flexbox with a
+                <code>flex-basic</code> of <code>auto</code>.</p>
+        </section>
+
+        <section class="main-section" id="alignment_justification_and_distribution_of_free_space_between_items">
+            <header>Alignment, justification and distribution of free space between items</header>
+            <p>A key feature of flexbox is the ability to align and justify items on the main- and cross-axes, and to
+                distribute space between flex items.</p>
+            <h3>align-items</h3>
+            <p>The <code>align-items</code> property will align the items on the cross axis.</p>
+            <p>The initial value for this property is <code>strech</code> and this is why flex items stretch to the
+                height of the tallest one by default. They are in fact stretching to fill the flex container — the
+                tallest item is defining the height of that.</p>
+            <p>You could instead set <code>align-items</code>to <code>flex-start</code> in order to make the items line
+                up at the start of the flex container, <code>flex-end</code> to align them to the end, or
+                <code>center</code> to align them in the centre. Values of this property are as follows:</p>
+            <ul>
+                <li><code>stretch</code></li>
+                <li><code>flex-start</code></li>
+                <li><code>flex-end</code></li>
+                <li><code>center</code></li>
+            </ul>
+            <h3>justify-content</h3>
+            <p>The <code>justify-content</code> property is used to align the items on the main axis, the direction
+                in which <code>flex-direction</code> has set the flow. The initial value is <code>flex-start</code>
+                which will line the items up at the start edge of the container, but you could also set the value to
+                <code>flex-end</code> to line them up at the end, or <code>center</code> to line them up in the
+                center.</p>
+            <p>You can also use the value <code>space-between</code> to take all the spare space after the items
+                have been laid out, and share it out evenly between the items so there will be an equal amount of
+                space between each item. To cause an equal amount of space on the right and left of each item use
+                the value <code>space-around</code>. With <code>space-around</code>, items have a half-size space on
+                either end. Or, to cause items to have equal space around them use the value
+                <code>space-evenly</code>. With <code>space-evenly</code>, items have a fulll-size space on either
+                end.</p>
+        </section>
+
+
+        <section class="main-section" id="reference">
+            <header>Reference</header>
+            <p>Source of this documentation is taken from <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">MDN</a>
+            </p>
+        </section>
+        <hr>
+        <p id="dev">Developed by Junaid Shaikh</p>
+    </main>
+</body>
+
+</html>
